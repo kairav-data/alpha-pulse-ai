@@ -31,3 +31,10 @@ jobs:
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
         run: python main.py
+
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-news-report
+          path: reports/*.html  # Make sure this matches where your main.py saves files
+          retention-days: 10
